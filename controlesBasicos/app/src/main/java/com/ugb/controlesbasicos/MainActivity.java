@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView tempVal;
     Button btn;
+    RadioGroup opt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +27,22 @@ public class MainActivity extends AppCompatActivity {
                 tempVal = findViewById(R.id.txtnum2);
                 double num2 = Double.parseDouble(tempVal.getText().toString());
 
-                double respuesta = num1 + num2;
-
+                double respuesta = 0;
+                opt = findViewById(R.id.optOpciones);
+                switch (opt.getCheckedRadioButtonId()){
+                    case R.id.optSuma:
+                        respuesta = num1+num2;
+                        break;
+                    case R.id.optResta:
+                        respuesta = num1-num2;
+                        break;
+                    case R.id.optMulplicacion:
+                        respuesta = num1*num2;
+                        break;
+                    case R.id.optDivision:
+                        respuesta = num1/num2;
+                        break;
+                }
                 tempVal = findViewById(R.id.lblrespuesta);
                 tempVal.setText("Respuesta: "+ respuesta);
             }
