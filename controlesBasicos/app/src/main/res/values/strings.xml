@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">controlesBasicos</string>
+    <string name="app_name">Calculadora basica</string>
+    <string-array name="spnopciones">
+        <item>Suma</item>
+        <item>Resta</item>
+        <item>Multiplicacion</item>
+        <item>Division</item>
+    </string-array>
 </resources>

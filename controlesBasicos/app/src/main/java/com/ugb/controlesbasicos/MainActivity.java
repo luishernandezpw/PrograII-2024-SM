@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView tempVal;
     Button btn;
     RadioGroup opt;
+    Spinner spn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
                 double respuesta = 0;
                 opt = findViewById(R.id.optOpciones);
+                spn = findViewById(R.id.spnOpciones);
                 switch (opt.getCheckedRadioButtonId()){
                     case R.id.optSuma:
                         respuesta = num1+num2;
@@ -40,6 +43,20 @@ public class MainActivity extends AppCompatActivity {
                         respuesta = num1*num2;
                         break;
                     case R.id.optDivision:
+                        respuesta = num1/num2;
+                        break;
+                }
+                switch (spn.getSelectedItemPosition()){
+                    case 0:
+                        respuesta = num1+num2;
+                        break;
+                    case 1:
+                        respuesta = num1-num2;
+                        break;
+                    case 2:
+                        respuesta = num1*num2;
+                        break;
+                    case 3:
                         respuesta = num1/num2;
                         break;
                 }
