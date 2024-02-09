@@ -26,13 +26,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/tabLongitud"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/lblDeLongitud"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="DE:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/lblALongitud"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="A:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/spnDeLongitud"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/spnLongitud"/>
+                    <Spinner
+                        android:id="@+id/spnALongitud"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/spnLongitud"/>
+                    <EditText
+                        android:id="@+id/txtCantidadLongitud"
+                        android:layout_below="@+id/spnALongitud"
+                        android:layout_marginTop="40dp"
+                        android:hint="Cantidad a convertir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/btnConvertirLongitud"
+                        android:layout_below="@+id/txtCantidadLongitud"
+                        android:layout_marginTop="40dp"
+                        android:text="CONVERTIR"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/tabAlmacenamiento"
