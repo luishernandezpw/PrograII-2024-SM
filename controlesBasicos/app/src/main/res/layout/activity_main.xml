@@ -6,95 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <TextView
-       android:id="@+id/lblnum1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Num 1:"
-       android:layout_marginLeft="20dp"
-       android:layout_marginTop="40dp"/>
-
     <TextView
-        android:id="@+id/lblnum2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtnum1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:text="Num 2:" />
-
-    <EditText
-        android:id="@+id/txtnum1"
-        android:inputType="numberDecimal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblnum1"
-        android:layout_marginTop="-30dp"
-        android:layout_marginLeft="80dp"/>
-
- <EditText
-     android:id="@+id/txtnum2"
-     android:inputType="numberDecimal"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_below="@+id/txtnum1"
-     android:layout_marginLeft="80dp"
-     android:layout_marginTop="20dp" />
-
-    <Spinner
-        android:id="@+id/spnOpciones"
-        android:entries="@array/spnopciones"
-        android:layout_below="@+id/txtnum2"
+        android:id="@+id/lblSensorProximidad"
+        android:text="Sensor de Proximidad: ?"
         android:layout_marginTop="60dp"
-        android:layout_marginStart="180dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <RadioGroup
-        android:id="@+id/optOpciones"
-        android:layout_below="@+id/txtnum2"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/optSuma"
-            android:text="SUMA"
-            android:checked="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optResta"
-            android:text="RESTA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optMulplicacion"
-            android:text="MULTIPLICACION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optDivision"
-            android:text="DIVISION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </RadioGroup>
-    <Button
-        android:id="@+id/btnCalcular"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/optOpciones"
-        android:layout_marginTop="40dp"
-        android:text="Calcular"/>
-
-    <TextView
-        android:id="@+id/lblrespuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnCalcular"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:text="Respuesta: ?" />
-
-
+        android:background="@color/white"
+        android:textColor="@color/black"/>
 </RelativeLayout>
