@@ -27,7 +27,7 @@ public class DB extends SQLiteOpenHelper {
             String sql = "";
             if( accion=="nuevo" ){
                 sql = "INSERT INTO amigos(nombre,direccion,telefono,email,dui) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
-                        "'"+ datos[4] +"','"+ datos[5] +"',)";
+                        "'"+ datos[4] +"','"+ datos[5] +"')";
             } else if (accion=="modificar") {
                 sql = "UPDATE amigos SET nombre='"+ datos[1] +"', direccion='"+ datos[2] +"', telefono='"+ datos[3] +"', email=" +
                         "'"+ datos[4] +"', dui='"+ datos[5] +"' WHERE idAmigo='"+ datos[0] +"'";
