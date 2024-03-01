@@ -8,60 +8,48 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tempVal;
     Button btn;
-    RadioGroup opt;
-    Spinner spn;
+    TextView tempVal;
+    String accion = "nuevo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = findViewById(R.id.btnCalcular);
+        btn = findViewById(R.id.btnGuardarAgendaAmigos);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tempVal = findViewById(R.id.txtnum1);
-                double num1 = Double.parseDouble(tempVal.getText().toString());
+                try {
+                    tempVal = findViewById(R.id.txtnombre);
+                    String nombre = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtnum2);
-                double num2 = Double.parseDouble(tempVal.getText().toString());
+                    tempVal = findViewById(R.id.txtdireccion);
+                    String direccion = tempVal.getText().toString();
 
-                double respuesta = 0;
-                opt = findViewById(R.id.optOpciones);
-                spn = findViewById(R.id.spnOpciones);
-                switch (opt.getCheckedRadioButtonId()){
-                    case R.id.optSuma:
-                        respuesta = num1+num2;
-                        break;
-                    case R.id.optResta:
-                        respuesta = num1-num2;
-                        break;
-                    case R.id.optMulplicacion:
-                        respuesta = num1*num2;
-                        break;
-                    case R.id.optDivision:
-                        respuesta = num1/num2;
-                        break;
+                    tempVal = findViewById(R.id.txtTelefono);
+                    String tel = tempVal.getText().toString();
+
+                    tempVal = findViewById(R.id.txtemail);
+                    String email = tempVal.getText().toString();
+
+                    tempVal = findViewById(R.id.txtdui);
+                    String dui = tempVal.getText().toString();
+
+                    DB db = new DB(getApplicationContext(), "",null, 1);
+                    String[] datos = new String[]{"",nombre,direccion,tel,email,dui};
+                    String respuesta = db.administrar_amigos(accion, datos);
+                    if(respuesta.equals("ok")){
+                        Toast.makeText(getApplicationContext(), "Amigo guardado con exito", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Error al intentar guardar el amigo: "+ respuesta, Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Error: "+ e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-                switch (spn.getSelectedItemPosition()){
-                    case 0:
-                        respuesta = num1+num2;
-                        break;
-                    case 1:
-                        respuesta = num1-num2;
-                        break;
-                    case 2:
-                        respuesta = num1*num2;
-                        break;
-                    case 3:
-                        respuesta = num1/num2;
-                        break;
-                }
-                tempVal = findViewById(R.id.lblrespuesta);
-                tempVal.setText("Respuesta: "+ respuesta);
             }
         });
     }
