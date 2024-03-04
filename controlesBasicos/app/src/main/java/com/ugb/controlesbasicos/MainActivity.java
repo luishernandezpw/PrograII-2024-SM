@@ -2,6 +2,7 @@ package com.ugb.controlesbasicos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +11,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
     Button btn;
+    FloatingActionButton fab;
     TextView tempVal;
     String accion = "nuevo";
     String id="";
@@ -20,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fab = findViewById(R.id.fabListarAmigos);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirActividad();
+            }
+        });
         btn = findViewById(R.id.btnGuardarAgendaAmigos);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     String respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
                         Toast.makeText(getApplicationContext(), "Amigo guardado con exito", Toast.LENGTH_LONG).show();
+                        abrirActividad();
                     }else{
                         Toast.makeText(getApplicationContext(), "Error al intentar guardar el amigo: "+ respuesta, Toast.LENGTH_LONG).show();
                     }
@@ -53,5 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void abrirActividad(){
+        Intent abrirActividad = new Intent(getApplicationContext(), lista_amigos.class);
+        startActivity(abrirActividad);
     }
 }
