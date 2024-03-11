@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class lista_amigos extends AppCompatActivity {
     DB db;
@@ -33,6 +37,47 @@ public class lista_amigos extends AppCompatActivity {
             }
         });
         obtenerAmigos();
+        buscarAmigos();
+    }
+    private void buscarAmigos(){
+        TextView tempVal = findViewById(R.id.txtBuscarAmigos);
+        tempVal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    alAmigos.clear();
+                    String valor = tempVal.getText().toString().trim().toLowerCase();
+                    if( valor.length()<=0 ){
+                        alAmigos.addAll(alAmigosCopy);
+                    }else{
+                        for (amigos amigo : alAmigosCopy){
+                            String nombre = amigo.getNombre();
+                            String direccion = amigo.getDireccion();
+                            String tel = amigo.getTelefono();
+                            String email = amigo.getEmail();
+                            if( nombre.trim().toLowerCase().contains(valor) ||
+                                direccion.trim().toLowerCase().contains(valor) ||
+                                tel.trim().contains(valor) ||
+                                email.trim().toLowerCase().contains(valor)){
+                                alAmigos.add(amigo);
+                            }
+                        }
+                        adaptadorImagenes adImagenes=new adaptadorImagenes(getApplicationContext(), alAmigos);
+                        lts.setAdapter(adImagenes);
+                    }
+                }catch (Exception e){
+                    mostrarMsg("Error al buscar: "+ e.getMessage());
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
     private void abrirActividad(){
         Intent abrirActividad = new Intent(getApplicationContext(), MainActivity.class);
