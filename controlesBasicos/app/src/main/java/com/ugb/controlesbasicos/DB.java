@@ -26,14 +26,14 @@ public class DB extends SQLiteOpenHelper {
         try {
             SQLiteDatabase db = getWritableDatabase();
             String sql = "";
-            if( accion=="nuevo" ){
+            if( accion.equals("nuevo") ){
                 sql = "INSERT INTO amigos(nombre,direccion,telefono,email,dui) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
                         "'"+ datos[4] +"','"+ datos[5] +"')";
-            } else if (accion=="modificar") {
+            } else if (accion.equals("modificar")) {
                 sql = "UPDATE amigos SET nombre='"+ datos[1] +"', direccion='"+ datos[2] +"', telefono='"+ datos[3] +"', email=" +
                         "'"+ datos[4] +"', dui='"+ datos[5] +"' WHERE idAmigo='"+ datos[0] +"'";
-            } else if (accion=="eliminar") {
-                sql = "DELETE FROM amigos WHERE idAmigo="+ datos[0] +"'";
+            } else if (accion.equals("eliminar")) {
+                sql = "DELETE FROM amigos WHERE idAmigo='"+ datos[0] +"'";
             }
             db.execSQL(sql);
             return "ok";
