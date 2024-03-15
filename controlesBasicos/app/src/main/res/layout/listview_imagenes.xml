@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="60dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="150dp"
+        android:layout_height="60dp">
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/lblnombre"
         android:text="nombre"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="80dp"
         android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -17,7 +29,7 @@
         android:text="telefono"
         android:textColor="@color/black"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
@@ -25,7 +37,7 @@
         android:text="email"
         android:textColor="@color/black"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="200dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </RelativeLayout>

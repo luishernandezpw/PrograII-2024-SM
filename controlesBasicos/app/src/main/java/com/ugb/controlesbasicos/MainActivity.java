@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     String dui = tempVal.getText().toString();
 
                     DB db = new DB(getApplicationContext(), "",null, 1);
-                    String[] datos = new String[]{id,nombre,direccion,tel,email,dui};
+                    String[] datos = new String[]{id,nombre,direccion,tel,email,dui, urlCompletaFoto};
                     mostrarMsg(accion);
                     String respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try{
-            if(resultCode==1 && resultCode==RESULT_OK){
+            if(requestCode==1 && resultCode==RESULT_OK){
                 Bitmap imageBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
                 img.setImageBitmap(imageBitmap);
             }else{
@@ -155,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
 
                 tempVal = findViewById(R.id.txtdui);
                 tempVal.setText(amigos[5]);
+
+                urlCompletaFoto = amigos[6];
+                Bitmap imageBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
+                img.setImageBitmap(imageBitmap);
             }
         }catch (Exception e){
             mostrarMsg("Error al mostrar datos: "+ e.getMessage());

@@ -76,6 +76,7 @@ public class lista_amigos extends AppCompatActivity {
                             cAmigos.getString(3), //telefono
                             cAmigos.getString(4), //email
                             cAmigos.getString(5), //dui
+                            cAmigos.getString(6), //foto
                     };
                     paramatros.putString("accion", "modificar");
                     paramatros.putStringArray("amigos", amigos);
@@ -180,7 +181,8 @@ public class lista_amigos extends AppCompatActivity {
                             cAmigos.getString(2),//direccion
                             cAmigos.getString(3),//telefono
                             cAmigos.getString(4),//email
-                            cAmigos.getString(5)//dui
+                            cAmigos.getString(5),//dui
+                            cAmigos.getString(6) //foto
                     );
                     alAmigos.add(datosAmigos);
                 }while (cAmigos.moveToNext());

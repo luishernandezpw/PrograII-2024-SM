@@ -7,14 +7,24 @@ public class amigos {
     String telefono;
     String email;
     String dui;
+    String urlFotoAmigo;
 
-    public amigos(String idAmigo, String nombre, String direccion, String telefono, String email, String dui) {
+    public amigos(String idAmigo, String nombre, String direccion, String telefono, String email, String dui, String urlFoto) {
         this.idAmigo = idAmigo;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
         this.dui = dui;
+        this.urlFotoAmigo = urlFoto;
+    }
+
+    public String getUrlFotoAmigo() {
+        return urlFotoAmigo;
+    }
+
+    public void setUrlFotoAmigo(String urlFotoAmigo) {
+        this.urlFotoAmigo = urlFotoAmigo;
     }
 
     public String getIdAmigo() {
