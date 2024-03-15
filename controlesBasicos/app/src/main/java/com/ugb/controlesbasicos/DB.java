@@ -28,7 +28,7 @@ public class DB extends SQLiteOpenHelper {
             SQLiteDatabase db = getWritableDatabase();
             String sql = "";
             if( accion.equals("nuevo") ){
-                sql = "INSERT INTO amigos(nombre,direccion,telefono,email,dui) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
+                sql = "INSERT INTO amigos(nombre,direccion,telefono,email,dui, foto) VALUES('"+ datos[1] +"', '"+ datos[2] +"', '"+ datos[3] +"', " +
                         "'"+ datos[4] +"','"+ datos[5] +"', '"+ datos[6] +"' )";
             } else if (accion.equals("modificar")) {
                 sql = "UPDATE amigos SET nombre='"+ datos[1] +"', direccion='"+ datos[2] +"', telefono='"+ datos[3] +"', email=" +
