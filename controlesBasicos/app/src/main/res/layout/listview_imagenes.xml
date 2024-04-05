@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/lblnombre"
         android:text="nombre"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="80dp"
         android:textSize="18dp"
@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/lbltelefono"
         android:text="telefono"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="80dp"
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
     <TextView
         android:id="@+id/lblemail"
         android:text="email"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="200dp"
         android:layout_width="wrap_content"

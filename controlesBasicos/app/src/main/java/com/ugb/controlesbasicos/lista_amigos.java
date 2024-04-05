@@ -86,6 +86,8 @@ public class lista_amigos extends AppCompatActivity {
                     misDatosJSONObject = datosJSON.getJSONObject(i).getJSONObject("value");
                     datosAmigos = new amigos(
                             misDatosJSONObject.getString("_id"),
+                            misDatosJSONObject.getString("_rev"),
+                            misDatosJSONObject.getString("idAmigo"),
                             misDatosJSONObject.getString("nombre"),
                             misDatosJSONObject.getString("direccion"),
                             misDatosJSONObject.getString("telefono"),
@@ -234,13 +236,14 @@ public class lista_amigos extends AppCompatActivity {
                     JSONObject jsonObjectValue = new JSONObject();
 
                     jsonObject.put("_id", cAmigos.getString(0));
-                    jsonObject.put("_rev", cAmigos.getString(0));
-                    jsonObject.put("nombre", cAmigos.getString(1));
-                    jsonObject.put("direccion", cAmigos.getString(2));
-                    jsonObject.put("telefono", cAmigos.getString(3));
-                    jsonObject.put("email", cAmigos.getString(4));
-                    jsonObject.put("dui", cAmigos.getString(5));
-                    jsonObject.put("urlCompletaFoto", cAmigos.getString(6));
+                    jsonObject.put("_rev", cAmigos.getString(1));
+                    jsonObject.put("idAmigo", cAmigos.getString(2));
+                    jsonObject.put("nombre", cAmigos.getString(3));
+                    jsonObject.put("direccion", cAmigos.getString(4));
+                    jsonObject.put("telefono", cAmigos.getString(5));
+                    jsonObject.put("email", cAmigos.getString(6));
+                    jsonObject.put("dui", cAmigos.getString(7));
+                    jsonObject.put("urlCompletaFoto", cAmigos.getString(8));
                     jsonObjectValue.put("value", jsonObject);
 
                     datosJSON.put(jsonObjectValue);
