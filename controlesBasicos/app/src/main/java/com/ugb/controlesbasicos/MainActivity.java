@@ -37,11 +37,12 @@ public class MainActivity extends AppCompatActivity {
     Intent tomarFotoIntent;
     ImageView img;
     utilidades utls;
+    detectarInternet di;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        di = new detectarInternet(getApplicationContext());
         utls = new utilidades();
         fab = findViewById(R.id.fabListarAmigos);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -70,33 +71,36 @@ public class MainActivity extends AppCompatActivity {
                     tempVal = findViewById(R.id.txtdui);
                     String dui = tempVal.getText().toString();
 
-                    //guardar datos en el servidor
-                    JSONObject datosAmigos = new JSONObject();
-                    if(accion.equals("modificar")){
-                        datosAmigos.put("_id", id);
-                        datosAmigos.put("_rev", rev);
-                    }
-                    datosAmigos.put("idAmigo", idAmigo);
-                    datosAmigos.put("nombre", nombre);
-                    datosAmigos.put("direccion", direccion);
-                    datosAmigos.put("telefono", tel);
-                    datosAmigos.put("email", email);
-                    datosAmigos.put("dui", dui);
-                    datosAmigos.put("urlCompletaFoto", urlCompletaFoto);
+                    String respuesta = "", actualizado = "no";
+                    if( di.hayConexionInternet() ) {
+                        //guardar datos en el servidor
+                        JSONObject datosAmigos = new JSONObject();
+                        if (accion.equals("modificar")) {
+                            datosAmigos.put("_id", id);
+                            datosAmigos.put("_rev", rev);
+                        }
+                        datosAmigos.put("idAmigo", idAmigo);
+                        datosAmigos.put("nombre", nombre);
+                        datosAmigos.put("direccion", direccion);
+                        datosAmigos.put("telefono", tel);
+                        datosAmigos.put("email", email);
+                        datosAmigos.put("dui", dui);
+                        datosAmigos.put("urlCompletaFoto", urlCompletaFoto);
 
-                    String respuesta = "";
-                    enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
-                    respuesta = objGuardarDatosServidor.execute(datosAmigos.toString()).get();
+                        enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
+                        respuesta = objGuardarDatosServidor.execute(datosAmigos.toString()).get();
 
-                    JSONObject respuestaJSONObject = new JSONObject(respuesta);
-                    if( respuestaJSONObject.getBoolean("ok") ){
-                        id = respuestaJSONObject.getString("id");
-                        rev = respuestaJSONObject.getString("rev");
-                    }else{
-                        mostrarMsg("Error al guardar datos en el servidor");
+                        JSONObject respuestaJSONObject = new JSONObject(respuesta);
+                        if (respuestaJSONObject.getBoolean("ok")) {
+                            id = respuestaJSONObject.getString("id");
+                            rev = respuestaJSONObject.getString("rev");
+                            actualizado="si";
+                        } else {
+                            mostrarMsg("Error al guardar datos en el servidor");
+                        }
                     }
                     DB db = new DB(getApplicationContext(), "",null, 1);
-                    String[] datos = new String[]{id, rev, idAmigo,nombre,direccion,tel,email,dui, urlCompletaFoto};
+                    String[] datos = new String[]{id, rev, idAmigo,nombre,direccion,tel,email,dui, urlCompletaFoto, actualizado};
                     respuesta = db.administrar_amigos(accion, datos);
                     if(respuesta.equals("ok")){
                         Toast.makeText(getApplicationContext(), "Amigo guardado con exito", Toast.LENGTH_LONG).show();
