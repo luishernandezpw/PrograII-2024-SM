@@ -33,9 +33,9 @@
         android:theme="@style/Theme.ControlesBasicos"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity android:name=".MainActivity"  />
+        <activity android:name=".usuarios"  />
         <activity
-            android:name=".usuarios"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
