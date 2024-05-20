@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 if(key!=null){
                     databaseReference.child(key).setValue(amigo).addOnSuccessListener(aVoid->{
                         mostrarMsg("Amigo registrado con exito.");
+                        abrirActividad();
                     });
                 }else{
                     mostrarMsg("Error nose pudo guardar en la base de datos");

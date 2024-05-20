@@ -11,6 +11,7 @@ public class amigos {
     String urlFotoAmigoFirestore;
     String token;
 
+    public amigos(){}
     public amigos(String idAmigo, String nombre, String direccion, String telefono, String email, String dui, String urlFoto, String urlFotoAmigoFirestore, String token) {
         this.idAmigo = idAmigo;
         this.nombre = nombre;
