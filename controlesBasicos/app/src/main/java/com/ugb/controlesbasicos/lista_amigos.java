@@ -55,6 +55,7 @@ public class lista_amigos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_amigos);
+        lts = findViewById(R.id.ltsAmigos);
         db = new DB(getApplicationContext(),"", null, 1);
         btn = findViewById(R.id.fabAgregarAmigos);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,25 @@ public class lista_amigos extends AppCompatActivity {
             obtenerAmigos();
         }
         buscarAmigos();
+        mostrarChats();
+    }
+    private void mostrarChats(){
+        lts.setOnItemClickListener((parent, view, position, id) -> {
+            try{
+                Bundle bundle = new Bundle();
+                bundle.putString("nombre", datosJSON.getJSONObject(position).getString("nombre") );
+                bundle.putString("to", datosJSON.getJSONObject(position).getString("to") );
+                bundle.putString("from", datosJSON.getJSONObject(position).getString("from") );
+                bundle.putString("urlCompletaFoto", datosJSON.getJSONObject(position).getString("urlCompletaFoto") );
+                bundle.putString("urlFotoAmigoFirestore", datosJSON.getJSONObject(position).getString("urlFotoAmigoFirestore") );
+
+                Intent intent = new Intent(getApplicationContext(), chats.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }catch (Exception ex){
+                mostrarMsg(ex.getMessage());
+            }
+        });
     }
     private void sincronizar(){
         try{
@@ -193,7 +213,6 @@ public class lista_amigos extends AppCompatActivity {
     private void mostrarDatosAmigos(){
         try{
             if( datosJSON.length()>0 ){
-                lts = findViewById(R.id.ltsAmigos);
                 alAmigos.clear();
                 alAmigosCopy.clear();
 
